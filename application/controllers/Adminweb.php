@@ -42,25 +42,46 @@ class Adminweb extends CI_Controller {
 		$this->web->load('panel','panel/identitas',$data);
 	}
 	function update_info(){
+		$input = $this->input->post();
         $config['upload_path']="./uploads/images";
         $config['allowed_types']='gif|jpg|png';
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload',$config);
         if($this->upload->do_upload("logo")){
             $data = array('upload_data' => $this->upload->data());
-            $image= $data['upload_data']['file_name'];             
-            $this->db->update("infoweb",['logo'=>$image],['id'=>1]);
-            $results = [
-	        	'result'=>TRUE,
-	        	'message'=>"Data berhasil diperbaharui"
-	        ];
-        }else{
-        	$results = [
-	        	'result'=>FALSE,
-	        	'message'=>$this->input->post('logo')." ".$this->upload->display_errors()
-	        ];
+            $image= $data['upload_data']['file_name'];
+            $datas =[
+	        	'title'=>$input['title'],
+	        	'author'=>$input['author'],
+	        	'description'=>$input['description'],
+	        	'logo'=>$image,
+	        ];         
+            $this->db->update("infoweb",$datas,['id'=>1]);   
+        }
+        if($this->upload->do_upload("favicon")){
+            $data = array('upload_data' => $this->upload->data());
+            $image= $data['upload_data']['file_name'];
+            $datas =[
+	        	'title'=>$input['title'],
+	        	'author'=>$input['author'],
+	        	'description'=>$input['description'],
+	        	'favicon'=>$image,
+	        ];          
+            $this->db->update("infoweb",$datas,['id'=>1]);   
         }
         
-        echo json_encode($results,200);
+        $datas =[
+        	'title'=>$input['title'],
+        	'author'=>$input['author'],
+        	'description'=>$input['description'],
+        ];
+        $save = $this->db->update('infoweb',$datas,['id'=>1]);
+        if ($save) {
+        	$this->session->set_flashdata('pesan','<script type="text/javascript">toastr.success("Data berhasil diperbaharui")</script>');
+        	redirect("adminweb/identitas");
+        }else{
+        	$this->session->set_flashdata('pesan','<script type="text/javascript">toastr.error("Data gagal diperbaharui")</script>');
+        	redirect("adminweb/identitas");
+        }
      }
 }

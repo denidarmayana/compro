@@ -20,10 +20,10 @@ $this->db->query("UPDATE visitor SET hits=hits+1, online='".$waktu."' WHERE ip='
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="author" content="Deni Darmayana">
-	<meta name="description" content="Creative Multipurpose Bootstrap Template">
+	<meta name="author" content="<?=$web->author ?>">
+	<meta name="description" content="<?=$web->description ?>">
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="<?=base_url('assets/web/') ?>assets/images/favicon.png">
+	<link rel="shortcut icon" href="<?=base_url('uploads/images/').$web->favicon ?>">
 	<!-- Google Font -->
 	<link
 		href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900%7CPlayfair+Display:400,400i,700,700i%7CRoboto:400,400i,500,700"
@@ -79,7 +79,7 @@ $this->db->query("UPDATE visitor SET hits=hits+1, online='".$waktu."' WHERE ip='
 			<div class="container">
 				<!-- Logo -->
 				<a class="navbar-brand" href="index.html">
-					<img src="<?=base_url('assets/web/') ?>assets/images/logo.png" width="150" height="150" alt="">
+					<img src="<?=base_url('uploads/images/').$web->logo ?>" width="150" height="150" alt="<?=$web->title ?>">
 				</a>
 				<!-- Menu opener button -->
 				<button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
@@ -144,7 +144,7 @@ $this->db->query("UPDATE visitor SET hits=hits+1, online='".$waktu."' WHERE ip='
 					<div class="col-md-3">
 						<div class="widget">
 							<a href="index.html" class="footer-logo">
-								<img src="<?=base_url('assets/web/') ?>/assets/images/logo.png" width="150" height="150" alt="">
+								<img src="<?=base_url('uploads/images/').$web->logo ?>" width="150" height="150" alt="<?=$web->title ?>">
 							</a>
 							<p class="mt-3">Contact us by social media</p>
 							<i class="fa fa-facebook-square"></i>&emsp;

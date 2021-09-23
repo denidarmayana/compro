@@ -15,6 +15,25 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.css">
+  <!-- REQUIRED SCRIPTS -->
+<!-- jQuery -->
+<script src="<?=base_url('assets/panel/') ?>plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="<?=base_url('assets/panel/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?=base_url('assets/panel/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?=base_url('assets/panel/') ?>dist/js/adminlte.js"></script>
+
+<!-- PAGE PLUGINS -->
+<!-- jQuery Mapael -->
+<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/raphael/raphael.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mapael/jquery.mapael.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<!-- ChartJS -->
+<script src="<?=base_url('assets/panel/') ?>plugins/chart.js/Chart.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.js"></script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -234,56 +253,10 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED SCRIPTS -->
-<!-- jQuery -->
-<script src="<?=base_url('assets/panel/') ?>plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="<?=base_url('assets/panel/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="<?=base_url('assets/panel/') ?>plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?=base_url('assets/panel/') ?>dist/js/adminlte.js"></script>
 
-<!-- PAGE PLUGINS -->
-<!-- jQuery Mapael -->
-<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="<?=base_url('assets/panel/') ?>plugins/raphael/raphael.min.js"></script>
-<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="<?=base_url('assets/panel/') ?>plugins/jquery-mapael/maps/usa_states.min.js"></script>
-<!-- ChartJS -->
-<script src="<?=base_url('assets/panel/') ?>plugins/chart.js/Chart.min.js"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="<?=base_url('assets/panel/') ?>dist/js/demo.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
     $(function() {
-      $('#submit_info').on('click',function(){
-        var title=$('#title').val();
-        var author=$('#author').val();
-        var description=$('#description').val();
-        var logo=$('#logo').val();
-        var favicon=$('#favicon').val();
-        $.ajax({
-          type : "POST",
-          url  : "<?=base_url('adminweb/update_info') ?>",
-          dataType : "JSON",
-          data : {title:title , author:author,description:description,logo:logo,favicon:favicon},
-          success: function(data){
-            if (data.result == 1) {
-              toastr.success(data.message)
-              setTimeout(function () {
-                 window.location.href = "<?=base_url('adminweb/identitas') ?>";
-              }, 1500);
-            }else{
-              toastr.error(data.message)
-            }
-          }
-        });
-        return false;
-      });
-      //infoweb
+      
     });
   </script>
 </body>

@@ -15,18 +15,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-              	<form class="form-horizontal" enctype="multipart/form-data" id="tambahSuratMasuk">
+              	<?=$this->session->flashdata('pesan') ?>
+              	<form class="form-horizontal" enctype="multipart/form-data" id="tambahSuratMasuk" method="post" action="<?=base_url('adminweb/update_info') ?>">
               	<div class="form-group">
                   <label for="exampleInputRounded0">Judul Website</label>
-                  <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Judul Website" id="title" value="<?=$data->title ?>">
+                  <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Judul Website" name="title" id="title" value="<?=$data->title ?>">
                 </div>
               	<div class="form-group">
 	              <label for="exampleInputRounded0">Author</label>
-	              <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Author" id="author" value="<?=$data->author ?>">
+	              <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Author"name="author" id="author" value="<?=$data->author ?>">
 	            </div>
 	            <div class="form-group">
 	              <label for="exampleInputRounded0">Deskripsi</label>
-	              <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Deskripsi" id="description" value="<?=$data->description ?>">
+	              <input type="text" class="form-control rounded-0" id="exampleInputRounded0" placeholder="Deskripsi" name="description" id="description" value="<?=$data->description ?>">
 	            </div>
 		          <div class="form-group">
 	                <div class="custom-file">
@@ -40,13 +41,14 @@
 	                  <label class="custom-file-label" for="customFile">Pilih favicon</label>
 	                </div>
 	              </div>
-	            </form>
+	            
 	        </div>
 	        <div class="card-footer">
 	        	<div class="float-right">
 	        		<button class="btn btn-sm btn-warning" type="submit" id="submit_info"><i class="fa fa-save"></i> Simpan</button>
 	        	</div>
 	        </div>
+	        </form>
           </div>
 	</div>
 </div>
