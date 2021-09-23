@@ -259,7 +259,31 @@
 <script src="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.js"></script>
   <script type="text/javascript">
     $(function() {
-
+      $('#submit_info').on('click',function(){
+        var title=$('#title').val();
+        var author=$('#author').val();
+        var description=$('#description').val();
+        var logo=$('#logo').val();
+        var favicon=$('#favicon').val();
+        $.ajax({
+          type : "POST",
+          url  : "<?=base_url('adminweb/update_info') ?>",
+          dataType : "JSON",
+          data : {title:title , author:author,description:description,logo:logo,favicon:favicon},
+          success: function(data){
+            if (data.result == 1) {
+              toastr.success(data.message)
+              setTimeout(function () {
+                 window.location.href = "<?=base_url('adminweb/identitas') ?>";
+              }, 1500);
+            }else{
+              toastr.error(data.message)
+            }
+          }
+        });
+        return false;
+      });
+      //infoweb
     });
   </script>
 </body>

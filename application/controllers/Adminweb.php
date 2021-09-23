@@ -37,20 +37,30 @@ class Adminweb extends CI_Controller {
 			'header'=>'Identitas Website',
 			'menu'=>'config',
 			'submenu'=>'identitas',
+			'data'=>$this->db->get('infoweb')->row(),
 		];
 		$this->web->load('panel','panel/identitas',$data);
 	}
-	function upload_logo(){
+	function update_info(){
         $config['upload_path']="./uploads/images";
         $config['allowed_types']='gif|jpg|png';
         $config['encrypt_name'] = TRUE;
         $this->load->library('upload',$config);
-        if($this->upload->do_upload("file")){
+        if($this->upload->do_upload("logo")){
             $data = array('upload_data' => $this->upload->data());
             $image= $data['upload_data']['file_name'];             
-            $result= $this->db->update("infoweb",['logo'=>$image],['id'=>1]);
-            echo json_decode($result);
+            $this->db->update("infoweb",['logo'=>$image],['id'=>1]);
+            $results = [
+	        	'result'=>TRUE,
+	        	'message'=>"Data berhasil diperbaharui"
+	        ];
+        }else{
+        	$results = [
+	        	'result'=>FALSE,
+	        	'message'=>$this->input->post('logo')." ".$this->upload->display_errors()
+	        ];
         }
- 
+        
+        echo json_encode($results,200);
      }
 }
