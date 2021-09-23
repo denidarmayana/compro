@@ -84,4 +84,15 @@ class Adminweb extends CI_Controller {
         	redirect("adminweb/identitas");
         }
      }
+     public function menu()
+	{
+		$data = [
+			'title'=>"AdminWeb - Protemus Capital",
+			'header'=>'Menu Website',
+			'menu'=>'config',
+			'submenu'=>'menu',
+			'data'=>$this->db->get('menu')->result(),
+		];
+		$this->web->load('panel','panel/menu',$data);
+	}
 }
