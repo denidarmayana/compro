@@ -30,4 +30,27 @@ class Adminweb extends CI_Controller {
 		];
 		$this->web->load('panel','panel/home',$data);
 	}
+	public function identitas()
+	{
+		$data = [
+			'title'=>"AdminWeb - Protemus Capital",
+			'header'=>'Identitas Website',
+			'menu'=>'config',
+			'submenu'=>'identitas',
+		];
+		$this->web->load('panel','panel/identitas',$data);
+	}
+	function upload_logo(){
+        $config['upload_path']="./uploads/images";
+        $config['allowed_types']='gif|jpg|png';
+        $config['encrypt_name'] = TRUE;
+        $this->load->library('upload',$config);
+        if($this->upload->do_upload("file")){
+            $data = array('upload_data' => $this->upload->data());
+            $image= $data['upload_data']['file_name'];             
+            $result= $this->db->update("infoweb",['logo'=>$image],['id'=>1]);
+            echo json_decode($result);
+        }
+ 
+     }
 }
