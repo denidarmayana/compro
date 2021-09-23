@@ -92,6 +92,7 @@ class Adminweb extends CI_Controller {
 			'menu'=>'config',
 			'submenu'=>'menu',
 			'data'=>$this->db->get('menu')->result(),
+			'parent'=>$this->db->get_where('menu',['parent'=>0])->result(),
 		];
 		$this->web->load('panel','panel/menu',$data);
 	}

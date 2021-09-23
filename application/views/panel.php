@@ -15,6 +15,11 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>dist/css/adminlte.min.css">
   <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
   <!-- REQUIRED SCRIPTS -->
 <!-- jQuery -->
 <script src="<?=base_url('assets/panel/') ?>plugins/jquery/jquery.min.js"></script>
@@ -34,6 +39,30 @@
 <!-- ChartJS -->
 <script src="<?=base_url('assets/panel/') ?>plugins/chart.js/Chart.min.js"></script>
 <script src="<?=base_url('assets/panel/') ?>plugins/toastr/toastr.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/select2/js/select2.full.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/js/dataTables.buttons.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/js/buttons.bootstrap4.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/jszip/jszip.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/pdfmake/pdfmake.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/pdfmake/vfs_fonts.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/js/buttons.html5.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/js/buttons.print.min.js"></script>
+<script src="<?=base_url('assets/panel/') ?>plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+<script type="text/javascript">
+  $(function () {
+    $('.select').select2({
+      theme: 'bootstrap4'
+    })
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+  })
+</script>
 </head>
 <body class="hold-transition dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
