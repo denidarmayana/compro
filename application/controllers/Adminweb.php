@@ -25,6 +25,8 @@ class Adminweb extends CI_Controller {
 			'visit_count'=>$totalpengunjung,
 			'visit_online'=>$pengunjungonline,
 			'count_blog'=>$jumlahblog,
+			'menu'=>'dashboard',
+			'submenu'=>'',
 		];
 		$this->web->load('panel','panel/home',$data);
 	}

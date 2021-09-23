@@ -115,32 +115,32 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item ">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link <?=($menu == 'dashboard' ? "active" : "") ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
           </li>
           
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link <?=($menu == 'config' ? "active" : "") ?>">
               <i class="nav-icon fas fa-cogs"></i>
               <p>Configurasi<i class="right fas fa-angle-left"></i></p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/charts/chartjs.html" class="nav-link">
+                <a href="<?=base_url('adminweb/identitas') ?>" class="nav-link <?=($submenu == 'identitas' ? "active" : "") ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Idensitas Website</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/flot.html" class="nav-link">
+                <a href="<?=base_url('adminweb/menu') ?>" class="nav-link <?=($submenu == 'menu' ? "active" : "") ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Menu</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/charts/inline.html" class="nav-link">
+                <a href="<?=base_url('adminweb/contact') ?>" class="nav-link <?=($submenu == 'contact' ? "active" : "") ?>">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Contact</p>
                 </a>
@@ -255,6 +255,6 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?=base_url('assets/panel/') ?>dist/js/demo.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?=base_url('assets/panel/') ?>dist/js/pages/dashboard2.js"></script>
+
 </body>
 </html>
